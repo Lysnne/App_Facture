@@ -1,0 +1,67 @@
+﻿<Page x:Class="SalonCoiffure.PaiementPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:local="clr-namespace:SalonCoiffure"
+      mc:Ignorable="d"
+      Title="Paiement">
+
+    <Grid  >
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+       
+        <ScrollViewer Grid.Column="0" VerticalScrollBarVisibility="Auto">
+            <StackPanel Margin="20">
+               
+                <StackPanel Orientation="Horizontal" Margin="0,0,0,20">
+                    <Image Source="/Online Payment.png" Width="80" Height="80" Margin="0,0,10,0"/>
+                    <TextBlock Text="Paiement" FontSize="28" FontWeight="Bold" Foreground="#FF0D3F31" VerticalAlignment="Center"/>
+                </StackPanel>
+                <TextBlock Text="Sélectionnez une facture:" FontWeight="Bold" Margin="0,0,0,5" FontSize="20"/>
+                <ComboBox ItemsSource="{Binding Factures}"
+                        SelectedItem="{Binding SelectedFacture}"
+                        DisplayMemberPath="Id"
+                        Margin="0,0,0,20"/>
+
+
+                <TextBlock Text="Destinataire:" FontSize="20" FontWeight="Bold" Foreground="White" Margin="0,5"/>
+                <TextBlock Text="Company.com" FontSize="20" Foreground="White" TextWrapping="Wrap" Margin="0,0,0,10"/>
+
+                <TextBlock Text="Référence:" FontSize="20" FontWeight="Bold" Foreground="White" Margin="0,5"/>
+                <TextBlock Text="{Binding SelectedFacture.Id}" FontSize="14" Foreground="White" TextWrapping="Wrap" Margin="0,0,0,10"/>
+
+                <TextBlock Text="Date:" FontSize="20" FontWeight="Bold" Foreground="White" Margin="0,5"/>
+                <TextBlock Text="{Binding SelectedFacture.Date}" FontSize="14" Foreground="White" TextWrapping="Wrap" Margin="0,0,0,10"/>
+
+                <TextBlock Text="Montant à payer :" FontSize="20" FontWeight="Bold" Foreground="White" Margin="0,5"/>
+                <TextBlock Text="{Binding Montant}"  FontSize="22" FontWeight="Bold" Foreground="White" />
+            </StackPanel>
+        </ScrollViewer>
+
+     
+        <ScrollViewer Grid.Column="1" VerticalScrollBarVisibility="Auto" Background="#AFD9D9D9" Width="445" Height="495" >
+            <StackPanel Margin="20" VerticalAlignment="Stretch">
+                <TextBlock Text="Sélectionnez un moyen de paiement :" FontSize="18" FontWeight="Bold" Foreground="Gray" Margin="0,0,0,20" />
+
+
+                <Button Content="Carte" Width="160" Height="45" Margin="5"
+                    Command="{Binding SelectModePaiementCommand}"
+                    CommandParameter="Carte"
+                    Background="{Binding CarteButtonBackground}"/>
+                <Button Content="Virement" Width="160" Height="45" Margin="5"
+                    Command="{Binding SelectModePaiementCommand}"
+                    CommandParameter="Virement"
+                    Background="{Binding VirementButtonBackground}"/>
+                <Button Content="Google/Apple Pay" Width="160" Height="45" Margin="5"
+                    Command="{Binding SelectModePaiementCommand}"
+                    CommandParameter="Google/Apple Pay"
+                    Background="{Binding GoogleAppleButtonBackground}"/>
+                <Button Content="Payer" Height="50" Background="#3D42DF" Foreground="White" FontSize="16" FontWeight="Bold" Width="239" Command="{Binding EnregistrerPaiementCommand}"/>
+            </StackPanel>
+        </ScrollViewer>
+    </Grid>
+</Page>

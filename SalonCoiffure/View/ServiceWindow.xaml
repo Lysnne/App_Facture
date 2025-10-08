@@ -1,0 +1,56 @@
+﻿<Page x:Class="SalonCoiffure.ServiceWindow"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:local="clr-namespace:SalonCoiffure"
+      mc:Ignorable="d"
+      Title="Service">
+
+    
+    <ScrollViewer VerticalScrollBarVisibility="Auto">
+        <Grid Margin="20">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <StackPanel Orientation="Horizontal" Margin="0,0,0,10" HorizontalAlignment="Center">
+                <Label Content="Nom" FontFamily="Georgia" Foreground="White" VerticalAlignment="Center" FontSize="20"/>
+                <TextBox Width="150" Margin="5" Text="{Binding SelectedService.Nom, UpdateSourceTrigger=PropertyChanged}" Background="#FF9692A5" FontSize="14" FontFamily="Georgia" Foreground="White" />
+                <Label Content="Prix" FontFamily="Georgia" Foreground="White" VerticalAlignment="Center" FontSize="20"/>
+                <TextBox Width="100" Margin="5" Text="{Binding SelectedService.Prix, UpdateSourceTrigger=PropertyChanged}" Background="#FF9692A5" FontSize="14" FontFamily="Georgia" Foreground="White" />
+            </StackPanel>
+
+           
+            <DataGrid Grid.Row="1"
+                      Width="826"
+                      Height="400"
+                      ItemsSource="{Binding FilteredServices}"
+                      SelectedItem="{Binding SelectedService}"
+                      AutoGenerateColumns="False"
+                      Background="#FFCCC7E0"
+                      FontFamily="Georgia"
+                      Margin="0"
+                      HorizontalAlignment="Stretch"
+                      VerticalAlignment="Stretch" Foreground="#FF65A3BA" FontSize="14">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Nom" Binding="{Binding Nom}" Width="*" Foreground="#FFB06262"/>
+                    <DataGridTextColumn Header="Prix" Binding="{Binding Prix}" Width="*" Foreground="#FFB06262"/>
+                </DataGrid.Columns>
+            </DataGrid>
+
+           
+            <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,10,0,0">
+                <Button Content="Ajouter" Command="{Binding AddCommand}" Margin="5" Background="#287F8A" Foreground="White" FontFamily="Georgia" FontSize="20"/>
+                <Button Content="Modifier" Command="{Binding UpdateCommand}" Margin="5" Background="#287F8A" Foreground="White" FontFamily="Georgia" FontSize="20"/>
+                <Button Content="Supprimer" Command="{Binding DeleteCommand}" Margin="5" Background="#287F8A" Foreground="White" FontFamily="Georgia" FontSize="20"/>
+                <Label Content="Rechercher un service" Foreground="White" FontFamily="Georgia" Margin="10,0,0,0" VerticalAlignment="Center" FontSize="18"/>
+                <TextBox Width="150" Margin="5" Text="{Binding SearchText, UpdateSourceTrigger=PropertyChanged}" Background="#FF9692A5" FontSize="14" FontFamily="Georgia" Foreground="White"/>
+            </StackPanel>
+
+        </Grid>
+    </ScrollViewer>
+</Page>
+

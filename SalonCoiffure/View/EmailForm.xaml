@@ -1,0 +1,47 @@
+﻿<Window x:Class="SalonCoiffure.EmailForm"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SalonCoiffure"
+        mc:Ignorable="d"
+        Title="Email Sender" Height="450" Width="800">
+    <Grid >
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <!-- To -->
+        <Label Grid.Row="0" Grid.Column="0" Content="À:" VerticalAlignment="Center" Margin="5"/>
+        <TextBox Grid.Row="0" Grid.Column="1" x:Name="TxtTo" Margin="5"/>
+        
+        <!-- From -->
+        <Label Grid.Row="1" Grid.Column="0" Content="De:" VerticalAlignment="Center" Margin="5"/>
+        <TextBox Grid.Row="1" Grid.Column="1" x:Name="TxtFrom" Margin="5"/>
+        
+        <!-- Password -->
+        <Label Grid.Row="2" Grid.Column="0" Content="Mot de passe:" VerticalAlignment="Center" Margin="5"/>
+        <TextBox Grid.Row="2" Grid.Column="1" x:Name="TxtPw" Margin="5"/>
+        
+        <!-- Subject -->
+        <Label Grid.Row="3" Grid.Column="0" Content="Sujet:" VerticalAlignment="Center" Margin="5"/>
+        <TextBox Grid.Row="3" Grid.Column="1" x:Name="TxtSubject" Margin="5"/>
+
+        <!-- Body -->
+        <Label Grid.Row="4" Grid.Column="0" Content="Message:" VerticalAlignment="Top" Margin="5"/>
+        <TextBox Grid.Row="4" Grid.Column="1" x:Name="TxtBody" TextWrapping="Wrap" AcceptsReturn="True" VerticalScrollBarVisibility="Auto" Margin="5"/>
+
+        <!-- Send Button -->
+        <Button Grid.Row="5" Grid.Column="1" x:Name="BtnSend" Content="Envoyer" HorizontalAlignment="Right" Margin="5" Width="100" Click="BtnSend_Click"/>
+    </Grid>
+</Window>
